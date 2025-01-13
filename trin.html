@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trading View</title>
+    <style>
+        /* إزالة أي هوامش أو حواف لضمان ملء الشاشة */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* يمنع التمرير */
+        }
+        #trading-view {
+            width: 100%; /* العرض الكامل */
+            height: 100vh; /* الطول الكامل للشاشة */
+        }
+    </style>
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+</head>
+<body>
+    <div id="trading-view"></div>
+
+    <script>
+        // استخراج المعلمات من الرابط
+        const params = new URLSearchParams(window.location.search);
+        const symbol = params.get('symbol');
+        const interval = params.get('interval');
+        const theme = params.get('theme');
+
+        // تحميل ويدجت TradingView
+        new TradingView.widget({
+            "container_id": "trading-view",
+            "width": "100%",
+            "height": "100%",
+            "symbol": symbol,
+            "interval": interval,
+            "timezone": "Etc/UTC",
+            "theme": theme === 'dark' ? 'dark' : 'light',
+            "style": "1",
+            "locale": "en",
+            "toolbar_bg": theme === 'dark' ? "#100425" : "#f1f3f6",
+            "enable_publishing": false,
+            "hide_side_toolbar": false,
+            "allow_symbol_change": true,
+            "details": true,
+            "hotlist": true,
+            "calendar": true,
+            "news": ["headlines"]
+        });
+    </script>
+</body>
+</html>
