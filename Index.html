@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stocks Trading Simulator</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            background-color: #100425; 
+            color: #ffffff; 
+            margin: 0; 
+            padding: 20px; 
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #1b1f3a;
+        }
+        header img {
+            height: 50px;
+        }
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 18px;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        #platform-selection { 
+            margin: 30px auto; 
+            max-width: 600px; 
+            background-color: #1b1f3a; 
+            padding: 20px; 
+            border-radius: 10px; 
+        }
+        h1 {
+            color: #ffcc00;
+        }
+        select, button { 
+            padding: 10px; 
+            font-size: 16px; 
+            margin: 10px; 
+            border-radius: 5px; 
+        }
+        select {
+            background: #4F5269;
+            color: #FFFFFF;
+            border: none;
+        }
+        button {
+            background: #363B5F;
+            color: #FFFFFF;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #ffcc00;
+            color: #000000;
+        }
+        .description {
+            margin: 20px auto;
+            max-width: 800px;
+            text-align: left;
+            line-height: 1.8;
+            background-color: #1b1f3a;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #999;
+        }
+        .image{
+          width:100%;
+          height: 740px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Platform Logo">
+        <nav>
+            <a href="#">Home</a>
+            
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <h1>Stocks Trading Simulator</h1>
+
+<img class="image" src="ko.png">
+
+    <div class="description">
+        <p><strong>Trading Basics:</strong> Trading involves buying and selling assets like stocks, cryptocurrencies, or forex to make profits. It's essential to understand market trends and use proper strategies.</p>
+        <p><strong>How It Works:</strong> Choose your preferred trading platform, set intervals for market data updates, and customize the theme for a seamless experience. Analyze the data and execute trades wisely.</p>
+        <p><strong>Why Trade:</strong> Trading allows you to grow your financial portfolio, take advantage of market movements, and gain financial independence with careful planning and execution.</p>
+    </div>
+
+    <div id="platform-selection">
+        <label for="platform">Select Platform:</label>
+        <select id="platform">
+            <option value="crypto">Crypto</option>
+            <option value="forex">Forex</option>
+            <option value="options">Options</option>
+            <option value="indian-stock">Indian Stock Exchange</option>
+        </select>
+        <br>
+        <label for="interval">Select Interval:</label>
+        <select id="interval">
+            <option value="1">1 Minute</option>
+            <option value="5">5 Minutes</option>
+            <option value="15">15 Minutes</option>
+            <option value="60">1 Hour</option>
+            <option value="D">1 Day</option>
+            <option value="W">1 Week</option>
+        </select>
+        <br>
+        <label for="theme">Theme:</label>
+        <select id="theme">
+            <option value="dark">Dark</option>
+            <option value="light">Light</option>
+        </select>
+        <br>
+        <button onclick="openTradingPopup()">Load Trading View</button>
+    </div>
+
+    <footer>
+        <p>© 2025 Stocks Trading Simulator. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function openTradingPopup() {
+            const platform = document.getElementById('platform').value;
+            const interval = document.getElementById('interval').value;
+            const theme = document.getElementById('theme').value;
+
+            let symbol;
+            switch (platform) {
+                case 'crypto':
+                    symbol = 'BINANCE:BTCUSDT'; // Example symbol for Bitcoin/USDT
+                    break;
+                case 'forex':
+                    symbol = 'OANDA:EURUSD'; // Example symbol for EUR/USD
+                    break;
+                case 'options':
+                    symbol = 'NASDAQ:AAPL'; // Example for options: Apple stock
+                    break;
+                case 'indian-stock':
+                    symbol = 'NSE:TCS'; // Example symbol for TCS on NSE
+                    break;
+                default:
+                    symbol = 'BINANCE:BTCUSDT';
+            }
+
+            // Construct the URL with parameters
+            const url = `trin.html?symbol=${symbol}&interval=${interval}&theme=${theme}`;
+
+            // Open the popup
+            window.open(url, '_blank', 'width=400,height=800,scrollbars=no,resizable=no');
+        }
+    </script>
+</body>
+</html>
